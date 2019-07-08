@@ -16,9 +16,9 @@
 
 - 服务端：Node.js `>=7.9.0 `
 - 数据库：MongoDB `>=3.4`
-- 数据库操作工具：mongoose`4.9`
-- WEB框架：Express `4.0`
-- 模板引擎：swig'`>=3.0`
+- 数据库操作工具：mongoose`5.6`
+- WEB框架：Express `4.1`
+- 模板引擎：swig'`1.4`
 
 
 
@@ -60,13 +60,20 @@ node index
 
 ## 页面效果
 
-首页
+首页：
+
 ![首页](./static/home.png)
 
-文章
+
+
+文章：
+
 ![文章](./static/article.png)
 
-后台
+
+
+后台：
+
 ![后台](./static/manager.png)
 
 
