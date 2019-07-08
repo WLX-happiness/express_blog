@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block main %}
+<ol class="breadcrumb">
+    <li><a href="/admin">后台管理</a></li>
+    <li class="active">添加内容</li>
+</ol>
+<h3>添加内容</h3>
+<form method="POST">
+    <div class="form-group">
+        <label for="contentFrom">所属标签：</label>
+        <select class="form-control" name="category" id="contentFrom">
+            {% for category in categories %}
+            <option value="{{category._id.toString()}}">{{category.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="contentTitle">内容标题：</label>
+        <input type="text" class="form-control" name="title" id="contentTitle" placeholder="请输入标题">
+    </div>
+    <div class="form-group">
+        <label for="contentDescription">内容简介：</label>
+        <textarea class="form-control" name="description" id="contentDescription" rows="4"
+            placeholder="请输入简介"></textarea>
+    </div>
+
+    <div id="after_marked">
+        <label for="preview">marked：</label>
+        <textarea class="form-control" name="content" id="preview" rows="10"></textarea>
+
+    </div>
+
+    <div class="form-group ">
+        <label for="text-input">内容：</label>
+        <textarea class="form-control" oninput='this.editor.update()' id="text-input" rows="10" placeholder="请输入内容"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">提交</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    function Editor(input, preview) {
+        this.update = function () {
+            preview.innerHTML = marked(input.value);
+        };
+        input.editor = this;
+        // this.update();
+    }
+    var $$ = function (id) { return document.getElementById(id); };
+    // console.log(document.getElementById('text-input'));
+    new Editor($$("text-input"), $$("preview")).update();
+</script>
+{% endblock %}
